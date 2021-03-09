@@ -60,10 +60,9 @@ export const GlobalContextProvider: React.FC = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
 
     async function getCountry() {
-        const res = await fetch('https://restcountries.eu/rest/v2/all')
-       const data = await res.json()
+        const res = await fetch('https://restcountries.eu/rest/v2/all');
+       const data = await res.json();
        dispatch({type: "COUNTRY_DATA", payload: data})
-        
     }
     useEffect(() => {
         getCountry()
