@@ -1,4 +1,5 @@
-import React, { createContext , useEffect, useReducer} from 'react'
+import { type } from 'node:os'
+import React, { createContext , useEffect, useReducer, useState} from 'react'
 
 type Language = { 
     iso639_1: string,
@@ -38,49 +39,63 @@ type Country = {
     flag?: string,
     regionalBlocs?: string[],
     cioc?: string
-    
 }
 
 type State = {
-    countries: Country[]
+    countries: Country[],
+    dispatch: React.Dispatch<any>
 }
 
 const initialState: State = {
-    countries: []
+    countries: [],
+    dispatch: () => null
 };
 
 
 type Action = {
-    type: "COUNTRY_DATA", 
-    payload: Country[]
-}
+        type: string, 
+        payload: Country[] 
+    }
+
 
 export const GlobalContext = createContext(initialState)
 
-function reducer(state: State, action: Action) {
+function reducer(state: State = initialState, action: Action) {
     switch (action.type) {
         case 'COUNTRY_DATA':
-            return { countries: action.payload}
+            return { 
+                ...state,
+                countries: action.payload
+            }
+        case 'FILTER_COUNTRY_BY_NAME':
+            return { 
+                ...state,
+                countries: action.payload,
+            }
 
-    
         default:
            return state
     }
 }
 
 export const GlobalContextProvider: React.FC = ({children}) => {
-    const [state, dispatch] = useReducer(reducer, initialState)
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     async function getCountry() {
         const res = await fetch('https://restcountries.eu/rest/v2/all');
        const data = await res.json();
        dispatch({type: "COUNTRY_DATA", payload: data})
     }
+
     useEffect(() => {
         getCountry()
-    },[])
+    }, []);
+
     return (
-        <GlobalContext.Provider value={{ countries: state.countries }}>
+        <GlobalContext.Provider value={{ 
+            countries: state.countries,
+            dispatch
+        }}>
             {children}
         </GlobalContext.Provider>
     )
