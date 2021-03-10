@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Link, useParams } from 'react-router-dom';
+import { Container } from '../styles/Container';
 import FilterCountries from './FilterCountries';
 import { GlobalContext } from './GlobalContext'
 
@@ -7,7 +8,7 @@ function CountryList() {
     const { countries } = useContext(GlobalContext);
 
     return (
-        <div data-testid="wrapper">
+        <Container data-testid="wrapper">
             <FilterCountries />
             <ul data-testid="country-list">
                 {countries.map((country) => (
@@ -24,7 +25,7 @@ function CountryList() {
                     </li>
                 ))}
             </ul>
-        </div>
+        </Container>
     )
 }
 

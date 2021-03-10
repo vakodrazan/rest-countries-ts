@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { Container } from '../styles/Container';
 import { GlobalContext } from './GlobalContext'
 
 function FilterCountries() {
@@ -27,31 +28,33 @@ function FilterCountries() {
     }, [region])
 
     return (
-        <section>
-            <div>
-                <input 
-                    type="text" 
-                    name="country-name" 
-                    id="country-name"
-                    placeholder="Search for a country..."
-                    value={countryName}
-                    onChange={(e) => setCountryName(e.target.value) }
-                />
-            </div>
-            <select 
-                name="border" 
-                id="border"
-                value={region}
-                onChange={({ target}) => setRegion(target.value)}
-            >
-                <option value="">Filter by Region</option>
-                <option value="africa">Africa</option>
-                <option value="america">America</option>
-                <option value="asia">Asia</option>
-                <option value="europe">Europe</option>
-                <option value="oceania">Oceania</option>
-            </select>
-        </section>
+        <Container>
+            <section>
+                <div>
+                    <input 
+                        type="text" 
+                        name="country-name" 
+                        id="country-name"
+                        placeholder="Search for a country..."
+                        value={countryName}
+                        onChange={(e) => setCountryName(e.target.value) }
+                    />
+                </div>
+                <select 
+                    name="border" 
+                    id="border"
+                    value={region}
+                    onChange={({ target}) => setRegion(target.value)}
+                >
+                    <option value="">Filter by Region</option>
+                    <option value="africa">Africa</option>
+                    <option value="america">America</option>
+                    <option value="asia">Asia</option>
+                    <option value="europe">Europe</option>
+                    <option value="oceania">Oceania</option>
+                </select>
+            </section>
+        </Container>
     )
 }
 

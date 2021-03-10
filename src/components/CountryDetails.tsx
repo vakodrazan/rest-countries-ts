@@ -2,6 +2,7 @@ import { type } from 'node:os';
 import React, { useContext } from 'react'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom';
+import { Container } from '../styles/Container';
 import { GlobalContext } from './GlobalContext';
 
 function CountryDetails() {
@@ -15,7 +16,7 @@ function CountryDetails() {
     const findCountry = countries.find(country => country.alpha3Code === countryCode);
 
     return (
-        <article>
+        <Container>
             <Link to="/">
                 <button>Back</button>
             </Link>
@@ -57,7 +58,7 @@ function CountryDetails() {
                     </p>
                 </div>
             </section>
-        </article>
+        </Container>
     )
 }
 
