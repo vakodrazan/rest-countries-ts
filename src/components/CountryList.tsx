@@ -7,18 +7,18 @@ function CountryList() {
     const { countries } = useContext(GlobalContext);
 
     return (
-        <div>
+        <div data-testid="wrapper">
             <FilterCountries />
-            <ul>
+            <ul data-testid="country-list">
                 {countries.map((country) => (
-                    <li key={country.numericCode}>
+                    <li data-testid="country-item" key={country.numericCode}>
                         <Link to={`/country/${country.alpha3Code}`}>
                             <img src={country.flag} alt={`${country.name} flag`} />
-                            <h2>{country.name}</h2>
-                            <div>
-                                <p>{country.population}</p>
-                                <p>{country.region}</p>
-                                <p>{country.capital}</p>
+                            <h2 data-testid="country-title">{country.name}</h2>
+                            <div data-testid="country-content">
+                                <p data-testid="country-population">{country.population}</p>
+                                <p data-testid="country-region">{country.region}</p>
+                                <p data-testid="country-capital">{country.capital}</p>
                             </div>
                         </Link>
                     </li>
