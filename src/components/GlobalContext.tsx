@@ -1,5 +1,17 @@
 import React, { createContext , useEffect, useReducer} from 'react'
 
+type Language = { 
+    iso639_1: string,
+    iso639_2: string,
+    name: string,
+    nativeName: string,
+}
+
+type Currencies = { 
+    code: string,
+    name: string,
+    symbol: string,
+}
 
 type Country = {
     name?: string,
@@ -17,11 +29,11 @@ type Country = {
     area?: number,
     gini?: number,
     timezones?: string[],
-    borders?: string[],
-    nativeNames?: string,
+    borders?: [string],
+    nativeName?: string,
     numericCode?: string,
-    currencies?: string[],
-    languages?: string[],
+    currencies?: Currencies[],
+    languages?: Language[],
     translations?: string[],
     flag?: string,
     regionalBlocs?: string[],
