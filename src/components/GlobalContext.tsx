@@ -1,6 +1,7 @@
 import { type } from 'node:os'
 import React, { createContext , useEffect, useReducer, useState} from 'react'
 
+// Languages's type
 type Language = { 
     iso639_1: string,
     iso639_2: string,
@@ -8,12 +9,14 @@ type Language = {
     nativeName: string,
 }
 
+// Currencies's type
 type Currencies = { 
     code: string,
     name: string,
     symbol: string,
 }
 
+// The object inside of the array's type
 type Country = {
     name?: string,
     topLevelDomain?: string[],
@@ -41,25 +44,28 @@ type Country = {
     cioc?: string
 }
 
+// Define the initial state' type
 type State = {
     countries: Country[],
     dispatch: React.Dispatch<any>
 }
 
+// Set initial value
 const initialState: State = {
     countries: [],
     dispatch: () => null
 };
 
-
+// Action type
 type Action = {
         type: string, 
         payload: Country[] 
     }
 
-
+// Create the context
 export const GlobalContext = createContext(initialState)
 
+// reducer function where the value is called to make it works
 function reducer(state: State = initialState, action: Action) {
     switch (action.type) {
         case 'COUNTRY_DATA':
@@ -78,6 +84,7 @@ function reducer(state: State = initialState, action: Action) {
     }
 }
 
+// Context function that will wrap the whole app
 export const GlobalContextProvider: React.FC = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 

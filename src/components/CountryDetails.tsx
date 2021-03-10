@@ -5,10 +5,13 @@ import { Link } from 'react-router-dom';
 import { GlobalContext } from './GlobalContext';
 
 function CountryDetails() {
+    // Get the params' type
     interface Params { countryCode: string }
+
     const { countryCode } = useParams<Params>();
     const { countries } = useContext(GlobalContext);
 
+    // Find the item that is clicked
     const findCountry = countries.find(country => country.alpha3Code === countryCode);
 
     return (
@@ -39,12 +42,13 @@ function CountryDetails() {
                             ))}</p>
                         </div>
                     </div>
-                    <p>Border Countries: {findCountry?.borders?.length ? findCountry?.borders?.map(border => {
+                    <p>Border Countries: 
+                        {findCountry?.borders?.length ? findCountry?.borders?.map(border => {
                         const findBorderCountry = countries.find(country => country.alpha3Code === border);
 
                             return (
                                 <Link to={`/country/${border}`} key={border}>
-                                    <span>{findBorderCountry?.name} </span>
+                                    <span> {findBorderCountry?.name} </span>
                                 </Link> 
                             )
                         })
