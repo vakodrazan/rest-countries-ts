@@ -40,9 +40,11 @@ function CountryDetails() {
                         </div>
                     </div>
                     <p>Border Countries: {findCountry?.borders?.length ? findCountry?.borders?.map(border => {
+                        const findBorderCountry = countries.find(country => country.alpha3Code === border);
+
                             return (
                                 <Link to={`/country/${border}`} key={border}>
-                                    <span>{border} </span>
+                                    <span>{findBorderCountry?.name} </span>
                                 </Link> 
                             )
                         })
