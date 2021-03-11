@@ -21,7 +21,9 @@ export const CountryListStyle = styled.ul`
 
         &-heading {
             padding-left: 32px;
+            padding-top: 32px;
             padding-right: 32px;
+            margin: 0;
         }
         &-content {
             padding-top: 32px;
@@ -32,6 +34,8 @@ export const CountryListStyle = styled.ul`
 
             &-detail {
                 font-weight: var(--weight-semi-bold);
+                margin: 0;
+                padding: 5px;
 
                 &-item {
                     font-weight: var(--weight-light);
