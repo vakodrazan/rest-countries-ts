@@ -1,3 +1,17 @@
+:root {
+  --color-dark-blue: hsl(209, 23%, 22%);
+  --color-dark-blue2: hsl(207, 26%, 17%);
+  --color-dark-blue3: hsl(200, 15%, 8%);
+  --color-dark-gray: hsl(0, 0%, 52%);
+  --color-light-gray: hsl(0, 0%, 98%);
+  --color-white: hsl(0, 0%, 100%);
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-semi-bold: 600;
+  --weight-extra-bold: 800;
+  --transition: 300ms ease-in-out;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

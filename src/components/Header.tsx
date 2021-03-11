@@ -10,7 +10,7 @@ function Header() {
           <Link to="/">
             <h1 data-testid="header-title">Where in the world?</h1>
           </Link>
-          <p data-testid="header-mode">Dark Mode</p>
+          <p className="mode" data-testid="header-mode">Dark Mode</p>
         </Container>
       </HeaderStyle>
     )
