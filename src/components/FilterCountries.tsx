@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Container } from '../styles/Container';
+import { Form } from '../styles/FilterCountries';
 import { GlobalContext } from './GlobalContext'
 
 function FilterCountries() {
@@ -28,33 +29,32 @@ function FilterCountries() {
     }, [region])
 
     return (
-        <Container>
-            <section>
-                <div>
-                    <input 
-                        type="text" 
-                        name="country-name" 
-                        id="country-name"
-                        placeholder="Search for a country..."
-                        value={countryName}
-                        onChange={(e) => setCountryName(e.target.value) }
-                    />
-                </div>
-                <select 
-                    name="border" 
-                    id="border"
-                    value={region}
-                    onChange={({ target}) => setRegion(target.value)}
-                >
-                    <option value="">Filter by Region</option>
-                    <option value="africa">Africa</option>
-                    <option value="america">America</option>
-                    <option value="asia">Asia</option>
-                    <option value="europe">Europe</option>
-                    <option value="oceania">Oceania</option>
-                </select>
-            </section>
-        </Container>
+        <Form>
+            <fieldset className="search-name">
+                <input 
+                    type="text" 
+                    name="country-name" 
+                    id="country-name"
+                    placeholder="Search for a country..."
+                    value={countryName}
+                    onChange={(e) => setCountryName(e.target.value) }
+                />
+            </fieldset>
+            <select 
+                name="border" 
+                id="border"
+                value={region}
+                onChange={({ target}) => setRegion(target.value)}
+                className="seach-region"
+            >
+                <option value="">Filter by Region</option>
+                <option value="africa">Africa</option>
+                <option value="america">America</option>
+                <option value="asia">Asia</option>
+                <option value="europe">Europe</option>
+                <option value="oceania">Oceania</option>
+            </select>
+        </Form>
     )
 }
 
