@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
 :root {
   --color-dark-blue: hsl(209, 23%, 22%);
   --color-dark-blue2: hsl(207, 26%, 17%);
@@ -10,28 +12,23 @@
   --weight-semi-bold: 600;
   --weight-extra-bold: 800;
   --transition: 300ms ease-in-out;
+  --color-blurry: rgb(0 0 0 / 3%);
+  --color-strong-blurry: rgb(0 0 0 / 29%);
+  --detail-box-shadow: 0 0 10px 0 var(--color-strong-blurry);
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  background-color: #fafafa;
 }
 
 button,
 input,
 select {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -44,4 +41,14 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+h1,
+p {
+  margin: 0;
 }
