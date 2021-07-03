@@ -23,6 +23,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
+  font-weight: 300;
+  font-size: 14px;
 }
 
 button,
@@ -51,4 +53,9 @@ a {
 h1,
 p {
   margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
 }

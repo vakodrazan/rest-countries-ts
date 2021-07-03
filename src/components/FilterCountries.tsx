@@ -1,38 +1,54 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Container } from '../styles/Container'
-import { Form } from '../styles/FilterCountries'
+import React, { useContext, useState } from 'react'
+import {
+  DropDownItem,
+  DropDownList,
+  Form,
+  SelectDropDown,
+  SelectDropDownContainer,
+} from '../styles/FilterCountries'
 import { GlobalContext } from './GlobalContext'
 
+const ArrowUpIcon = (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    height='24px'
+    viewBox='0 0 24 24'
+    width='24px'
+    fill='currentColor'>
+    <path d='M0 0h24v24H0V0z' fill='none' />
+    <path d='M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z' />
+  </svg>
+)
+
+const ArrowDownIcon = (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    height='24px'
+    viewBox='0 0 24 24'
+    width='24px'
+    fill='currentColor'>
+    <path d='M0 0h24v24H0V0z' fill='none' />
+    <path d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z' />
+  </svg>
+)
+
 function FilterCountries() {
-  const { dispatch, countries } = useContext(GlobalContext)
-  const [countryName, setCountryName] = useState('')
-  const [region, setRegion] = useState('')
+  const { setCountryName, countryName, setRegion, region } =
+    useContext(GlobalContext)
 
-  // Filter by country name
-  function filterByName() {
-    const filterCountries = countries.filter((country) =>
-      country.name
-        ?.toLocaleLowerCase()
-        .includes(countryName.toLocaleLowerCase())
-    )
-    dispatch({ type: 'FILTER_COUNTRY_BY_NAME', payload: filterCountries })
+  const [isOpen, setIsOpen] = useState(false)
+  const regions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
+
+  const onClickRegion = (region: string) => {
+    setIsOpen(false)
+    setRegion(region)
   }
 
-  useEffect(() => {
-    filterByName()
-  }, [countryName])
-
-  // Filter by country region
-  function filterByRegion() {
-    const filterCountryRegion = countries.filter((country) =>
-      country.region?.toLocaleLowerCase().includes(region.toLocaleLowerCase())
-    )
-    dispatch({ type: 'FILTER_COUNTRY_BY_NAME', payload: filterCountryRegion })
+  const onToggleDropDown = (event: any) => {
+    setIsOpen(!isOpen)
   }
 
-  useEffect(() => {
-    filterByRegion()
-  }, [region])
+  const DropDownIcon = isOpen ? ArrowUpIcon : ArrowDownIcon
 
   return (
     <Form>
@@ -43,22 +59,29 @@ function FilterCountries() {
           id='country-name'
           placeholder='Search for a country...'
           value={countryName}
-          onChange={(e) => setCountryName(e.target.value)}
+          onChange={({ target }) => setCountryName(target.value)}
         />
       </fieldset>
-      <select
-        name='border'
-        id='border'
-        value={region}
-        onChange={({ target }) => setRegion(target.value)}
-        className='search-region'>
-        <option value=''>Filter by Region</option>
-        <option value='africa'>Africa</option>
-        <option value='america'>America</option>
-        <option value='asia'>Asia</option>
-        <option value='europe'>Europe</option>
-        <option value='oceania'>Oceania</option>
-      </select>
+
+      <SelectDropDownContainer>
+        <SelectDropDown onClick={onToggleDropDown}>
+          <span>{region ? region : 'Filter by Region'}</span>
+          {DropDownIcon}
+        </SelectDropDown>
+
+        {isOpen && (
+          <DropDownList>
+            {regions.map((region) => (
+              <DropDownItem
+                key={region}
+                onClick={() => onClickRegion(region)}
+                arial-label={`${region}'s region`}>
+                {region}
+              </DropDownItem>
+            ))}
+          </DropDownList>
+        )}
+      </SelectDropDownContainer>
     </Form>
   )
 }

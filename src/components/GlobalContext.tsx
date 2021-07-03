@@ -1,6 +1,5 @@
-import React, { createContext, useEffect, useReducer, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 
-// Languages's type
 type Language = {
   iso639_1: string
   iso639_2: string
@@ -8,15 +7,13 @@ type Language = {
   nativeName: string
 }
 
-// Currencies's type
 type Currencies = {
   code: string
   name: string
   symbol: string
 }
 
-// The object inside of the array's type
-type Country = {
+export type Country = {
   name?: string
   topLevelDomain?: string[]
   alpha2Code?: string
@@ -43,54 +40,35 @@ type Country = {
   cioc?: string
 }
 
-// Define the initial state' type
 type State = {
   countries: Country[]
-  dispatch: React.Dispatch<any>
+  region: string
+  countryName: string
+  setCountries: React.Dispatch<React.SetStateAction<never[]>>
+  setRegion: React.Dispatch<React.SetStateAction<string>>
+  setCountryName: React.Dispatch<React.SetStateAction<string>>
 }
 
-// Set initial value
 const initialState: State = {
   countries: [],
-  dispatch: () => null,
+  region: '',
+  countryName: '',
+  setCountries: () => null,
+  setRegion: () => null,
+  setCountryName: () => null,
 }
 
-// Action type
-type Action = {
-  type: string
-  payload: Country[]
-}
-
-// Create the context
 export const GlobalContext = createContext(initialState)
 
-// reducer function where the value is called to make it works
-function reducer(state: State = initialState, action: Action) {
-  switch (action.type) {
-    case 'COUNTRY_DATA':
-      return {
-        ...state,
-        countries: action.payload,
-      }
-    case 'FILTER_COUNTRY_BY_NAME':
-      return {
-        ...state,
-        countries: action.payload,
-      }
-
-    default:
-      return state
-  }
-}
-
-// Context function that will wrap the whole app
 export const GlobalContextProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [countries, setCountries] = useState([])
+  const [countryName, setCountryName] = useState('')
+  const [region, setRegion] = useState('')
 
   async function getCountry() {
     const res = await fetch('https://restcountries.eu/rest/v2/all')
     const data = await res.json()
-    dispatch({ type: 'COUNTRY_DATA', payload: data })
+    setCountries(data)
   }
 
   useEffect(() => {
@@ -100,8 +78,12 @@ export const GlobalContextProvider: React.FC = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
-        countries: state.countries,
-        dispatch,
+        countries,
+        setCountries,
+        region,
+        countryName,
+        setRegion,
+        setCountryName,
       }}>
       {children}
     </GlobalContext.Provider>

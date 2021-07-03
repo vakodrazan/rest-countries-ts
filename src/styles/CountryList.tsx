@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 
 export const CountryListStyle = styled.ul`
@@ -6,8 +5,12 @@ export const CountryListStyle = styled.ul`
   row-gap: 44px;
   column-gap: 50px;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, 320px);
+  grid-template-columns: repeat(auto-fit, 1fr);
   text-align: left;
+
+  @media (min-width: 750px) {
+    grid-template-columns: repeat(auto-fit, 290px);
+  }
 
   a {
     color: currentColor;
