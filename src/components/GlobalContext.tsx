@@ -47,6 +47,8 @@ type State = {
   setCountries: React.Dispatch<React.SetStateAction<never[]>>
   setRegion: React.Dispatch<React.SetStateAction<string>>
   setCountryName: React.Dispatch<React.SetStateAction<string>>
+  toggleTheme: () => void
+  theme: string
 }
 
 const initialState: State = {
@@ -56,6 +58,8 @@ const initialState: State = {
   setCountries: () => null,
   setRegion: () => null,
   setCountryName: () => null,
+  toggleTheme: () => null,
+  theme: 'dark',
 }
 
 export const GlobalContext = createContext(initialState)
@@ -64,6 +68,7 @@ export const GlobalContextProvider: React.FC = ({ children }) => {
   const [countries, setCountries] = useState([])
   const [countryName, setCountryName] = useState('')
   const [region, setRegion] = useState('')
+  const [theme, setTheme] = useState('dark')
 
   async function getCountry() {
     const res = await fetch('https://restcountries.eu/rest/v2/all')
@@ -73,7 +78,12 @@ export const GlobalContextProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     getCountry()
+    toggleTheme()
   }, [])
+
+  function toggleTheme() {
+    theme === 'light' ? setTheme('dark') : setTheme('light')
+  }
 
   return (
     <GlobalContext.Provider
@@ -84,6 +94,8 @@ export const GlobalContextProvider: React.FC = ({ children }) => {
         countryName,
         setRegion,
         setCountryName,
+        toggleTheme,
+        theme,
       }}>
       {children}
     </GlobalContext.Provider>

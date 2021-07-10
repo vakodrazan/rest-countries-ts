@@ -21,7 +21,7 @@ export const CountryListStyle = styled.ul`
     border-radius: 8px;
     box-shadow: 0 0 0.7rem 0.2rem var(--color-blurry);
     transition: var(--transition) transform, var(--transition) box-shadow;
-    background-color: var(--color-white);
+    background-color: ${({ theme }) => theme.background};
 
     &-heading {
       padding-left: 32px;
