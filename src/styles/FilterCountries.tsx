@@ -134,7 +134,7 @@ export const DropDownItem = styled.button`
   padding-left: 20px;
 
   &:hover {
-    background-color: var(--color-light-gray);
+    background-color: ${({ theme }) => theme.body};
   }
 
   &:focus {
