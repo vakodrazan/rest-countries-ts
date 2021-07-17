@@ -6,6 +6,7 @@ import { Container } from '../styles/Container'
 import {
   CountryBorderItem,
   CountryBorderList,
+  CountryDetailContent,
   CountryDetailListStyle,
   CountryDetailsStyle,
 } from '../styles/CountryDetails'
@@ -34,7 +35,7 @@ function CountryDetails() {
         </Link>
         <CountryDetailsStyle>
           <img src={findCountry?.flag} alt={`${findCountry?.name} flag`} />
-          <div>
+          <CountryDetailContent>
             <div>
               <div>
                 <p>Native Name: {findCountry?.nativeName}</p>
@@ -87,7 +88,7 @@ function CountryDetails() {
                 <span>No border countries for this country.</span>
               )}
             </div>
-          </div>
+          </CountryDetailContent>
         </CountryDetailsStyle>
       </CountryDetailListStyle>
     </Container>

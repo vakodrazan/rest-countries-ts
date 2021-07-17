@@ -28,10 +28,8 @@ export const CountryBorderList = styled.div`
 `
 
 export const CountryBorderItem = styled(Link)`
-  background-color: #fff;
   box-shadow: var(--detail-box-shadow);
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -40,4 +38,14 @@ export const CountryBorderItem = styled(Link)`
 
 export const CountryDetailsStyle = styled.section`
   padding-top: 54px;
+  display: flex;
+  flex-direction: row;
+  // justify-content: space-between;
+  gap: 40px;
 `
+
+export const CountryDetailContent = styled.div`
+  width: -moz-available;
+  width: -webkit-fill-available;
+`
+// width: -webkit - fill - available
