@@ -77,8 +77,10 @@ export const GlobalContextProvider: React.FC = ({ children }) => {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     getCountry()
     toggleTheme()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function toggleTheme() {
