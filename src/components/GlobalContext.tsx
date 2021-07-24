@@ -48,6 +48,7 @@ type State = {
   setRegion: React.Dispatch<React.SetStateAction<string>>
   setCountryName: React.Dispatch<React.SetStateAction<string>>
   toggleTheme: () => void
+  resetSearchForm: () => void
   theme: string
 }
 
@@ -60,6 +61,7 @@ const initialState: State = {
   setCountryName: () => null,
   toggleTheme: () => null,
   theme: 'dark',
+  resetSearchForm: () => null,
 }
 
 export const GlobalContext = createContext(initialState)
@@ -87,6 +89,11 @@ export const GlobalContextProvider: React.FC = ({ children }) => {
     theme === 'light' ? setTheme('dark') : setTheme('light')
   }
 
+  const resetSearchForm = () => {
+    setRegion('')
+    setCountryName('')
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -98,6 +105,7 @@ export const GlobalContextProvider: React.FC = ({ children }) => {
         setCountryName,
         toggleTheme,
         theme,
+        resetSearchForm,
       }}>
       {children}
     </GlobalContext.Provider>

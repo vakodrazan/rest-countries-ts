@@ -4,14 +4,16 @@ import {
   DropDownList,
   Form,
   InputSearch,
+  ResetButton,
   SelectDropDown,
   SelectDropDownContainer,
+  Wrapper,
 } from '../styles/FilterCountries'
 import { GlobalContext } from './GlobalContext'
 import { ArrowUpIcon, ArrowDownIcon, SearchIcon } from '../icons/Icons'
 
 function FilterCountries() {
-  const { setCountryName, countryName, setRegion, region } =
+  const { setCountryName, countryName, setRegion, region, resetSearchForm } =
     useContext(GlobalContext)
 
   const [isOpen, setIsOpen] = useState(false)
@@ -42,26 +44,30 @@ function FilterCountries() {
           autoComplete='off'
         />
       </InputSearch>
+      <Wrapper>
+        <SelectDropDownContainer>
+          <SelectDropDown onClick={onToggleDropDown}>
+            <span>{region ? region : 'Filter by Region'}</span>
+            {DropDownIcon}
+          </SelectDropDown>
 
-      <SelectDropDownContainer>
-        <SelectDropDown onClick={onToggleDropDown}>
-          <span>{region ? region : 'Filter by Region'}</span>
-          {DropDownIcon}
-        </SelectDropDown>
-
-        {isOpen && (
-          <DropDownList>
-            {regions.map((region) => (
-              <DropDownItem
-                key={region}
-                onClick={() => onClickRegion(region)}
-                arial-label={`${region}'s region`}>
-                {region}
-              </DropDownItem>
-            ))}
-          </DropDownList>
-        )}
-      </SelectDropDownContainer>
+          {isOpen && (
+            <DropDownList>
+              {regions.map((region) => (
+                <DropDownItem
+                  key={region}
+                  onClick={() => onClickRegion(region)}
+                  arial-label={`${region}'s region`}>
+                  {region}
+                </DropDownItem>
+              ))}
+            </DropDownList>
+          )}
+        </SelectDropDownContainer>
+        <ResetButton type='button' onClick={resetSearchForm}>
+          Reset form
+        </ResetButton>
+      </Wrapper>
     </Form>
   )
 }

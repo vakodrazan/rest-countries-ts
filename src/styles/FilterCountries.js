@@ -16,7 +16,7 @@ export const Form = styled.form`
   padding-bottom: 60px;
   gap: 39px;
 
-  @media (min-width: 650px) {
+  @media (min-width: 750px) {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
@@ -36,7 +36,7 @@ export const InputSearch = styled.label`
   color: ${({ theme }) => theme.inputText};
   border-radius: 8px;
 
-  @media (min-width: 650px) {
+  @media (min-width: 750px) {
     width: 30%;
     max-width: 30%;
   }
@@ -84,28 +84,24 @@ export const SelectDropDownContainer = styled.div`
   ${DropdownGlobalStyle}
   gap: 10px;
   position: relative;
-  max-width: 60%;
   font-weight: 600;
   z-index: 3;
 
-  @media (min-width: 650px) {
-    max-width: 40%;
-    width: 30%;
-  }
   @media (min-width: 750px) {
-    max-width: 25%;
-    width: 25%;
+    max-width: 60%;
+    width: 55%;
   }
 
-  @media (min-width: 1440px) {
-    max-width: 20%;
-    width: 18%;
+  @media (min-width: 920px) {
+    max-width: 65%;
+    width: 60%;
   }
 `
 
 export const SelectDropDown = styled.label`
-  box-shadow: var(--color-blurry) 0px 0.2rem 0.9rem 0px;
   background-color: ${({ theme }) => theme.background};
+  box-shadow: var(--color-blurry) 0px 0.2rem 0.9rem 0px;
+  border-radius: 8px;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 20px;
@@ -116,12 +112,9 @@ export const SelectDropDown = styled.label`
   align-items: center;
   justify-content: space-between;
   gap: 5px;
-  border-radius: 8px;
 
   @media (min-width: 650px) {
     margin: 0;
-    padding-top: 28px;
-    padding-bottom: 28px;
   }
 `
 
@@ -143,4 +136,37 @@ export const DropDownItem = styled.button`
   &:focus {
     outline: none;
   }
+`
+
+export const Wrapper = styled.div`
+  ${flexColumn}
+  gap: 10px;
+  max-width: 60%;
+  @media (min-width: 750px) {
+    flex-direction: row;
+    max-width: 50%;
+    width: 50%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 920px) {
+    max-width: 30%;
+    width: 30%;
+  }
+`
+
+export const ResetButton = styled.button`
+  background-color: ${({ theme }) => theme.background};
+  box-shadow: var(--color-blurry) 0px 0.2rem 0.9rem 0px;
+  border-radius: 8px;
+  color: ${({ theme }) => theme.text};
+  border: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
 `
