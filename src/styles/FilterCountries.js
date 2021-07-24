@@ -34,6 +34,7 @@ export const InputSearch = styled.label`
   padding-top: 28px;
   padding-bottom: 28px;
   color: ${({ theme }) => theme.inputText};
+  border-radius: 8px;
 
   @media (min-width: 650px) {
     width: 30%;
@@ -73,7 +74,9 @@ export const DropDownList = styled.div`
   width: 100%;
   top: 109%;
   padding-top: 20px;
+  padding-bottom: 20px;
   background-color: ${({ theme }) => theme.background};
+  border-radius: 8px;
 `
 
 export const SelectDropDownContainer = styled.div`
@@ -83,7 +86,6 @@ export const SelectDropDownContainer = styled.div`
   position: relative;
   max-width: 60%;
   font-weight: 600;
-
   z-index: 3;
 
   @media (min-width: 650px) {
@@ -114,6 +116,7 @@ export const SelectDropDown = styled.label`
   align-items: center;
   justify-content: space-between;
   gap: 5px;
+  border-radius: 8px;
 
   @media (min-width: 650px) {
     margin: 0;

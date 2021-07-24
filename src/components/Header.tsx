@@ -7,6 +7,7 @@ import { GlobalContext } from './GlobalContext'
 
 function Header() {
   const { theme, toggleTheme } = useContext(GlobalContext)
+  const themeMode = theme === 'light'
   return (
     <HeaderStyle>
       <Container>
@@ -14,7 +15,8 @@ function Header() {
           <h1 className='heading'>Where in the world?</h1>
         </Link>
         <ButtonMode onClick={toggleTheme}>
-          {theme === 'light' ? LightModeIcon : DarkModeIcon} Dark Mode
+          {themeMode ? LightModeIcon : DarkModeIcon}{' '}
+          {themeMode ? 'Dark Mode' : 'Light Mode'}
         </ButtonMode>
       </Container>
     </HeaderStyle>
