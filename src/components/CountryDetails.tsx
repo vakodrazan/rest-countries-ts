@@ -1,19 +1,22 @@
 import React, { useContext } from 'react'
 import { useParams } from 'react-router'
-import { Link } from 'react-router-dom'
 import { ArrowLeftIcon } from '../icons/Icons'
 import { Container } from '../styles/Container'
 import {
+  CallToAction,
+  CountrFlag,
   CountryBorderItem,
   CountryBorderList,
   CountryDetailContent,
+  CountryDetailContentInformation,
+  CountryDetailHeading,
   CountryDetailListStyle,
   CountryDetailsStyle,
+  CountryDetailContentInfoItems,
 } from '../styles/CountryDetails'
 import { GlobalContext } from './GlobalContext'
 
 function CountryDetails() {
-  // Get the params' type
   interface Params {
     countryCode: string
   }
@@ -21,7 +24,6 @@ function CountryDetails() {
   const { countryCode } = useParams<Params>()
   const { countries } = useContext(GlobalContext)
 
-  // Find the item that is clicked
   const findCountry = countries.find(
     (country) => country.alpha3Code === countryCode
   )
@@ -29,54 +31,65 @@ function CountryDetails() {
   return (
     <Container>
       <CountryDetailListStyle>
-        <Link to='/' className='call-to-action'>
+        <CallToAction to='/'>
           {ArrowLeftIcon}
           <span> Back</span>
-        </Link>
+        </CallToAction>
         <CountryDetailsStyle>
-          <img src={findCountry?.flag} alt={`${findCountry?.name} flag`} />
+          <CountrFlag
+            src={findCountry?.flag}
+            alt={`${findCountry?.name} flag`}
+          />
           <CountryDetailContent>
-            <div>
-              <div>
-                <p>Native Name: {findCountry?.nativeName}</p>
+            <CountryDetailHeading>{findCountry?.name}</CountryDetailHeading>
+            <CountryDetailContentInformation>
+              <CountryDetailContentInfoItems>
                 <p>
-                  Population: {findCountry?.population?.toLocaleString('en-US')}
+                  <strong>Native Name: </strong> {findCountry?.nativeName}
                 </p>
-                <p>Region: {findCountry?.region}</p>
-                <p>Sub Region: {findCountry?.subregion}</p>
-                <p>Capital: {findCountry?.capital}</p>
-              </div>
-              <div>
                 <p>
-                  Top Level Domain:{' '}
+                  <strong>Population: </strong>{' '}
+                  {findCountry?.population?.toLocaleString('en-US')}
+                </p>
+                <p>
+                  <strong>Region: </strong> {findCountry?.region}
+                </p>
+                <p>
+                  <strong>Sub Region: </strong> {findCountry?.subregion}
+                </p>
+                <p>
+                  <strong>Capital: </strong> {findCountry?.capital}
+                </p>
+              </CountryDetailContentInfoItems>
+              <CountryDetailContentInfoItems>
+                <p>
+                  <strong>Top Level Domain: </strong>
                   {findCountry?.topLevelDomain
                     ?.map((topLevel) => topLevel)
                     .join(', ')}
                 </p>
                 <p>
-                  Currencies:{' '}
+                  <strong>Currencies: </strong>
                   {findCountry?.currencies?.map((currency) => (
                     <span key={currency.name}>{currency.name}</span>
                   ))}
                 </p>
                 <p>
-                  Languages:{' '}
+                  <strong>Languages: </strong>
                   {findCountry?.languages
                     ?.map((language) => language?.name)
                     .join(', ')}
                 </p>
-              </div>
-            </div>
-            <div>
-              Border Countries:
+              </CountryDetailContentInfoItems>
+            </CountryDetailContentInformation>
+            <CountryDetailContentInfoItems>
+              <strong>Border Countries: </strong>
               {findCountry?.borders?.length ? (
                 <CountryBorderList>
                   {findCountry?.borders?.map((border) => {
                     const findBorderCountry = countries?.find(
                       (country) => country?.alpha3Code === border
                     )
-                    console.log(findBorderCountry)
-
                     return (
                       <CountryBorderItem to={`/country/${border}`} key={border}>
                         {findBorderCountry?.name}
@@ -87,7 +100,7 @@ function CountryDetails() {
               ) : (
                 <span>No border countries for this country.</span>
               )}
-            </div>
+            </CountryDetailContentInfoItems>
           </CountryDetailContent>
         </CountryDetailsStyle>
       </CountryDetailListStyle>

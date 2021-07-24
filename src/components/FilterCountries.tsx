@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {
   DropDownItem,
   DropDownList,
@@ -22,7 +22,7 @@ function FilterCountries() {
     setRegion(region)
   }
 
-  const onToggleDropDown = (event: any) => {
+  const onToggleDropDown = () => {
     setIsOpen(!isOpen)
   }
 
