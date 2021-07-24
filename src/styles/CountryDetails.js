@@ -88,7 +88,7 @@ export const CountrFlag = styled.img`
   width: fill-available;
 
   @media (min-width: 950px) {
-    width: auto;
+    width: 50%;
   }
 `
 export const CountryDetailHeading = styled.h2`
