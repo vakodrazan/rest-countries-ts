@@ -50,6 +50,7 @@ type State = {
   toggleTheme: () => void
   resetSearchForm: () => void
   theme: string
+  isLoading: boolean
 }
 
 const initialState: State = {
@@ -62,6 +63,7 @@ const initialState: State = {
   toggleTheme: () => null,
   theme: 'dark',
   resetSearchForm: () => null,
+  isLoading: true,
 }
 
 export const GlobalContext = createContext(initialState)
@@ -71,11 +73,13 @@ export const GlobalContextProvider: React.FC = ({ children }) => {
   const [countryName, setCountryName] = useState('')
   const [region, setRegion] = useState('')
   const [theme, setTheme] = useState('dark')
+  const [isLoading, setIsLoading] = useState(true)
 
   async function getCountry() {
     const res = await fetch('https://restcountries.eu/rest/v2/all')
     const data = await res.json()
     setCountries(data)
+    setIsLoading(false)
   }
 
   useEffect(() => {
@@ -106,6 +110,7 @@ export const GlobalContextProvider: React.FC = ({ children }) => {
         toggleTheme,
         theme,
         resetSearchForm,
+        isLoading,
       }}>
       {children}
     </GlobalContext.Provider>

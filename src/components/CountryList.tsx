@@ -4,6 +4,7 @@ import { Container } from '../styles/Container'
 import { CountryListStyle } from '../styles/CountryList'
 import FilterCountries from './FilterCountries'
 import { Country, GlobalContext } from './GlobalContext'
+import { Loading } from './Loading'
 
 function CountryList() {
   const { countries, countryName, region } = useContext(GlobalContext)
@@ -27,6 +28,7 @@ function CountryList() {
   return (
     <Container data-testid='wrapper'>
       <FilterCountries />
+      <Loading />
       <CountryListStyle data-testid='country-list'>
         {filteredCountries.map((country) => (
           <li
