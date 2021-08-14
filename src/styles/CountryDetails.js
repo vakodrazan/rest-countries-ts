@@ -29,8 +29,8 @@ export const CallToAction = styled(Link)`
 `
 
 export const CountryBorderList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 `
 
