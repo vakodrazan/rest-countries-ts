@@ -14,7 +14,7 @@
   --transition: 300ms ease-in-out;
   --color-blurry: rgb(0 0 0 / 3%);
   --color-strong-blurry: rgb(0 0 0 / 29%);
-  --detail-box-shadow: 0 0 10px 0 var(--color-strong-blurry);
+  --detail-box-shadow: rgb(0 0 0 / 6%) 0px 0.2rem 0.9rem;
 }
 
 body {
@@ -46,6 +46,11 @@ ul {
 a {
   color: currentColor;
   text-decoration: none;
+}
+
+button:hover,
+a:hover {
+  opacity: 0.8;
 }
 
 h1,
