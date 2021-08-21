@@ -14,6 +14,10 @@ import {
   CountryDetailsStyle,
   CountryDetailContentInfoItems,
 } from '../styles/CountryDetails'
+import {
+  CountryContentTitle,
+  CountryContentDetailItem,
+} from '../styles/CountryList'
 import { GlobalContext } from './GlobalContext'
 
 function CountryDetails() {
@@ -44,46 +48,66 @@ function CountryDetails() {
             <CountryDetailHeading>{findCountry?.name}</CountryDetailHeading>
             <CountryDetailContentInformation>
               <CountryDetailContentInfoItems>
-                <p>
-                  <strong>Native Name: </strong> {findCountry?.nativeName}
-                </p>
-                <p>
-                  <strong>Population: </strong>{' '}
-                  {findCountry?.population?.toLocaleString('en-US')}
-                </p>
-                <p>
-                  <strong>Region: </strong> {findCountry?.region}
-                </p>
-                <p>
-                  <strong>Sub Region: </strong> {findCountry?.subregion}
-                </p>
-                <p>
-                  <strong>Capital: </strong> {findCountry?.capital}
-                </p>
+                <CountryContentTitle>
+                  Native Name:{' '}
+                  <CountryContentDetailItem>
+                    {findCountry?.nativeName}
+                  </CountryContentDetailItem>
+                </CountryContentTitle>
+                <CountryContentTitle>
+                  Population:{' '}
+                  <CountryContentDetailItem>
+                    {findCountry?.population?.toLocaleString('en-US')}
+                  </CountryContentDetailItem>
+                </CountryContentTitle>
+                <CountryContentTitle>
+                  Region:{' '}
+                  <CountryContentDetailItem>
+                    {findCountry?.region}
+                  </CountryContentDetailItem>
+                </CountryContentTitle>
+                <CountryContentTitle>
+                  Sub Region:{' '}
+                  <CountryContentDetailItem>
+                    {findCountry?.subregion}
+                  </CountryContentDetailItem>
+                </CountryContentTitle>
+                <CountryContentTitle>
+                  Capital:{' '}
+                  <CountryContentDetailItem>
+                    {findCountry?.capital}
+                  </CountryContentDetailItem>
+                </CountryContentTitle>
               </CountryDetailContentInfoItems>
               <CountryDetailContentInfoItems>
-                <p>
-                  <strong>Top Level Domain: </strong>
-                  {findCountry?.topLevelDomain
-                    ?.map((topLevel) => topLevel)
-                    .join(', ')}
-                </p>
-                <p>
-                  <strong>Currencies: </strong>
-                  {findCountry?.currencies?.map((currency) => (
-                    <span key={currency.name}>{currency.name}</span>
-                  ))}
-                </p>
-                <p>
-                  <strong>Languages: </strong>
-                  {findCountry?.languages
-                    ?.map((language) => language?.name)
-                    .join(', ')}
-                </p>
+                <CountryContentTitle>
+                  Top Level Domain:
+                  <CountryContentDetailItem>
+                    {findCountry?.topLevelDomain
+                      ?.map((topLevel) => topLevel)
+                      .join(', ')}
+                  </CountryContentDetailItem>
+                </CountryContentTitle>
+                <CountryContentTitle>
+                  Currencies:
+                  <CountryContentDetailItem>
+                    {findCountry?.currencies?.map((currency) => (
+                      <span key={currency.name}>{currency.name}</span>
+                    ))}
+                  </CountryContentDetailItem>
+                </CountryContentTitle>
+                <CountryContentTitle>
+                  Languages:
+                  <CountryContentDetailItem>
+                    {findCountry?.languages
+                      ?.map((language) => language?.name)
+                      .join(', ')}
+                  </CountryContentDetailItem>
+                </CountryContentTitle>
               </CountryDetailContentInfoItems>
             </CountryDetailContentInformation>
             <CountryDetailContentInfoItems>
-              <strong>Border Countries: </strong>
+              <CountryContentTitle>Border Countries: </CountryContentTitle>
               {findCountry?.borders?.length ? (
                 <CountryBorderList>
                   {findCountry?.borders?.map((border) => {

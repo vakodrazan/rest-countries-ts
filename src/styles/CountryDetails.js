@@ -64,6 +64,10 @@ export const CountryDetailContent = styled.div`
   ${FlexRowLayout}
   width: -moz-available;
   width: -webkit-fill-available;
+
+  p {
+    padding: 0;
+  }
 `
 
 export const CountryDetailContentInformation = styled.div`
@@ -79,7 +83,7 @@ export const CountryDetailContentInformation = styled.div`
 
 export const CountryDetailContentInfoItems = styled.div`
   ${FlexRowLayout}
-  gap: 10px;
+  gap: 5px;
 `
 
 export const CountrFlag = styled.img`
