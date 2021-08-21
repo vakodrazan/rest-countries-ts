@@ -31,8 +31,8 @@ export const InputSearch = styled.label`
   background-color: ${({ theme }) => theme.background};
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 28px;
-  padding-bottom: 28px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   color: ${({ theme }) => theme.inputText};
   border-radius: 8px;
 
