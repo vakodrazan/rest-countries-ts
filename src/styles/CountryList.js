@@ -45,13 +45,13 @@ export const CountryListContent = styled.div`
   padding-bottom: 44px;
   transition: var(--transition) background-color;
 `
-export const CountryListContentDetail = styled.p`
+export const CountryContentTitle = styled.p`
   font-weight: var(--weight-semi-bold);
   margin: 0;
   padding: 5px;
 `
 
-export const CountryListContentDetailItem = styled.span`
+export const CountryContentDetailItem = styled.span`
   font-weight: var(--weight-light);
 `
 

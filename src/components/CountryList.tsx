@@ -6,8 +6,8 @@ import {
   CountryListStyle,
   CountryListHeading,
   CountryListContent,
-  CountryListContentDetail,
-  CountryListContentDetailItem,
+  CountryContentTitle,
+  CountryContentDetailItem,
   CountryListItemImage,
 } from '../styles/CountryList'
 import FilterCountries from './FilterCountries'
@@ -49,27 +49,27 @@ function CountryList() {
                 {country.name}
               </CountryListHeading>
               <CountryListContent data-testid='country-content'>
-                <CountryListContentDetail data-testid='country-population'>
+                <CountryContentTitle data-testid='country-population'>
                   Population:
-                  <CountryListContentDetailItem>
+                  <CountryContentDetailItem>
                     {' '}
                     {country.population}
-                  </CountryListContentDetailItem>
-                </CountryListContentDetail>
-                <CountryListContentDetail data-testid='country-region'>
+                  </CountryContentDetailItem>
+                </CountryContentTitle>
+                <CountryContentTitle data-testid='country-region'>
                   Region:
-                  <CountryListContentDetailItem>
+                  <CountryContentDetailItem>
                     {' '}
                     {country.region}
-                  </CountryListContentDetailItem>
-                </CountryListContentDetail>
-                <CountryListContentDetail data-testid='country-capital'>
+                  </CountryContentDetailItem>
+                </CountryContentTitle>
+                <CountryContentTitle data-testid='country-capital'>
                   Capital:
-                  <CountryListContentDetailItem>
+                  <CountryContentDetailItem>
                     {' '}
                     {country.capital}
-                  </CountryListContentDetailItem>
-                </CountryListContentDetail>
+                  </CountryContentDetailItem>
+                </CountryContentTitle>
               </CountryListContent>
             </Link>
           </CountryListItem>
