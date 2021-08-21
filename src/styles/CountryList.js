@@ -23,6 +23,8 @@ export const CountryListItem = styled.li`
   box-shadow: 0 0 0.7rem 0.2rem var(--color-blurry);
   transition: var(--transition) transform, var(--transition) box-shadow;
   background-color: ${({ theme }) => theme.background};
+  max-width: 350px;
+  margin: auto;
 
   img {
     width: 100%;
