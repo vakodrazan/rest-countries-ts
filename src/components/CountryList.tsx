@@ -19,9 +19,7 @@ function CountryList() {
 
   const filteredCountriesByName = (allCountries: Country[]) => {
     return allCountries.filter((country) =>
-      country.name
-        ?.toLocaleLowerCase()
-        .includes(countryName.toLocaleLowerCase())
+      country.name?.common?.toLocaleLowerCase().includes(countryName.toLocaleLowerCase())
     )
   }
 
@@ -42,11 +40,11 @@ function CountryList() {
           <CountryListItem data-testid='country-item' key={country.numericCode}>
             <Link to={`/country/${country.alpha3Code}`}>
               <CountryListItemImage
-                src={country.flag}
-                alt={`${country.name} flag`}
+                src={country.flags?.png}
+                alt={`${country.name?.common} flag`}
               />
               <CountryListHeading data-testid='country-title'>
-                {country.name}
+                {country.name?.common}
               </CountryListHeading>
               <CountryListContent data-testid='country-content'>
                 <CountryContentTitle data-testid='country-population'>

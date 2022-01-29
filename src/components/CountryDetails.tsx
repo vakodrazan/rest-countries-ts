@@ -41,8 +41,8 @@ function CountryDetails() {
         </CallToAction>
         <CountryDetailsStyle>
           <CountrFlag
-            src={findCountry?.flag}
-            alt={`${findCountry?.name} flag`}
+            src={findCountry?.flags?.png}
+            alt={`${findCountry?.name?.common} flag`}
           />
           <CountryDetailContent>
             <CountryDetailHeading>{findCountry?.name}</CountryDetailHeading>
