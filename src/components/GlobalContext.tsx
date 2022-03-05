@@ -13,19 +13,8 @@ type Currencies = {
   symbol: string;
 };
 
-type Name = {
-  common: string;
-  nativeName?: {
-    msa?: {
-      common: string;
-      official?: string;
-    };
-  };
-  official?: string;
-};
-
 export type Country = {
-  name?: Name;
+  name: string;
   topLevelDomain?: string[];
   alpha2Code?: string;
   alpha3Code?: string;
@@ -90,8 +79,9 @@ export const GlobalContextProvider: React.FC = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   async function getAllCountries() {
-    const res = await fetch('https://restcountries.com/v3.1/all');
+    const res = await fetch('https://restcountries.com/v2/all');
     const data = await res.json();
+
     setCountries(data);
     setIsLoading(false);
   }

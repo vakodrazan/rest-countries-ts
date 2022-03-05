@@ -42,7 +42,7 @@ function CountryDetails() {
         <CountryDetailsStyle>
           <CountrFlag
             src={findCountry?.flags?.png}
-            alt={`${findCountry?.name?.common} flag`}
+            alt={`${findCountry?.name} flag`}
           />
           <CountryDetailContent>
             <CountryDetailHeading>{findCountry?.name}</CountryDetailHeading>
