@@ -11,5 +11,4 @@ This project is build with React.js with dynamic routes.
 ## Design and UI
 
 ![homepage-light](./homepage-light.png)
-![homepage-dark](./homepage-light.png)
 ![detailpage-dark](./detail-page.png)
