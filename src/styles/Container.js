@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.div`
   padding-left: 20px;
@@ -13,4 +13,10 @@ export const Container = styled.div`
     padding-right: 20px;
     padding-bottom: 20px;
   }
-`
+`;
+
+export const PaginationContainer = styled.div`
+  margin-top: 15px;
+  display: flex;
+  justify-content: flex-end;
+`;
