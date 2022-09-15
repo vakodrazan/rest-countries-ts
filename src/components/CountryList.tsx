@@ -27,8 +27,6 @@ function CountryList() {
     );
   };
 
-  console.log(countries, 'countries');
-
   const filteredCountries = filteredByRegion(
     filteredCountriesByName(countries)
   );
